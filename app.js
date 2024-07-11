@@ -1,9 +1,8 @@
 const express = require('express')
 const app = express()
-const port = 8080
+const port = 8082
 
 app.get('/test', (req, res) => {
-  // res.header('Access-Control-Allow-Origin', 'http://localhost:3000')
   res.json({success: "true"});
 })
 
@@ -16,7 +15,6 @@ app.get('/async', async (req, res) => {
 })
 
 app.get('/posts/1', (req, res) => {
-  // res.header('Access-Control-Allow-Origin', 'http://localhost:3000')
   res.send(
     {
       "userId": 1,
@@ -27,9 +25,6 @@ app.get('/posts/1', (req, res) => {
 })
 
 app.get('/users/1', (req, res) => {
-  // res.header('Access-Control-Allow-Origin', 'http://localhost:3000')
-  // res.header('Access-Control-Allow-Origin', 'https://proxy.hoppscotch.io')
-  // res.header('Access-Control-Allow-Origin', '*')
   res.send(
     {
       "id": 1,
