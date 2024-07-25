@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: vaidkaran/effortless_test_runner
-          token: ${{ secrets.EFFORTLESS_TEST_RUNNER_ACCESS_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Install dependencies
         run: npm install
       - name: Run tests
