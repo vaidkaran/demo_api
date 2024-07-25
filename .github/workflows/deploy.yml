@@ -29,7 +29,7 @@ jobs:
           repository: vaidkaran/effortless_test_runner
           ref: 'main'
           path: main
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.EFFORTLESS_TEST_RUNNER_ACCESS_TOKEN }}
       - name: Install dependencies
         run: npm install
       - name: Run tests
