@@ -32,7 +32,6 @@ echo "value of i is: $i"
 echo "value of maxRetries is: $maxRetries"
 while [[ $i -le $maxRetries ]]
 do
-  echo "inside until............................"
   s=$(depStatus)
   echo "deloyment status is $s"
   if [[ "$s" = "live" ]]
@@ -46,11 +45,12 @@ do
 done
 
 
+echo !!! Finished !!!
 if [[ $liveStatus -eq 1 ]]
 then
-  echo "deployment successfully completed with live status"
+  echo "Deployment successfully completed with status: live"
   exit 0
 else
-  echo "deployment did not complete with live status in 3 mins"
+  echo "Deployment did not complete in 3 mins with status: live"
   exit 1
 fi
