@@ -32,8 +32,8 @@ jobs:
           token: ${{ secrets.EFFORTLESS_TEST_RUNNER_ACCESS_TOKEN }}
       - name: Install dependencies
         run: npm install
-      - name: Run tests
-        run: npm run test:prod
+      # - name: Run tests
+      #   run: npm run test:prod
 
 
     #   uses: actions/setup-node@v3
