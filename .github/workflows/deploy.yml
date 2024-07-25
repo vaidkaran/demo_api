@@ -11,13 +11,28 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to render
+        run:  bash ${GITHUB_WORKSPACE}/.github/deploy.sh
+  
+  runTests:
+    runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node-version: [20]
+      
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: 'vaidkaran/effortless_test_runner'
+      - name: Install dependencies
+        run: npm install
+      - name: Run tests
+        run: npm run test:prod
 
-    # steps:
-    # - uses: actions/checkout@v4
-    # - name: Deploy to render
+
     #   uses: actions/setup-node@v3
     #   with:
     #     node-version: ${{ matrix.node-version }}
