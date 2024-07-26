@@ -33,7 +33,9 @@ jobs:
         env:
           EFFORTLESS_TEST_RUNNER_ACCESS_TOKEN: ${{ secrets.EFFORTLESS_TEST_RUNNER_ACCESS_TOKEN }}
         run: |
-          sed -i "s/EFFORTLESS_TEST_RUNNER_ACCESS_TOKEN/${{ secrets.EFFORTLESS_TEST_RUNNER_ACCESS_TOKEN }}/g" .npmrc
+          pwd
+          ls -a
+          sed -i "s/EFFORTLESS_TEST_RUNNER_ACCESS_TOKEN/${{ secrets.EFFORTLESS_TEST_RUNNER_ACCESS_TOKEN }}/g" ./.npmrc
           npm install
       # - name: Run tests
       #   run: npm run test:prod
