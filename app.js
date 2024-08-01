@@ -23,7 +23,7 @@ app.get('/posts/1', (req, res) => {
     {
       "userId": 1,
       "id": 1,
-      "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+      "body": "quia et suscipit suscipit",
     }
   )
 })
@@ -33,7 +33,7 @@ app.get('/users/1', (req, res) => {
     {
       "id": 1,
       "name": "karan",
-      "username": "Kkaran",
+      "username": "karan",
       "email": "Sincere@april.biz",
       "address": {
         "street": "Kulas Light",
