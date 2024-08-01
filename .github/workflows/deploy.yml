@@ -18,7 +18,7 @@ jobs:
         
   
   runTests:
-    needs: [deploy]
+    # needs: [deploy]
     runs-on: ubuntu-latest
     strategy:
       matrix:
