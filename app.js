@@ -1,12 +1,25 @@
 const express = require('express')
 const app = express()
 const port = 8082
+const token = '3h55w452h23h4234234j2hlkhg3453l';
+
+const checkAuth = (req, res, next) => {
+  if (req.headers.authorization !== token) {
+    res.send('No or invalid token');
+    return;
+  }
+  next();
+};
 
 app.get('/', (req, res) => {
   res.send('Welcome to the demo-api');
 })
 
-app.get('/test', (req, res) => {
+app.get('/auth', (req, res) => {
+  res.send({token});
+})
+
+app.get('/test', checkAuth, (req, res) => {
   res.json({success: "true"});
 })
 
@@ -18,7 +31,7 @@ app.get('/async', async (req, res) => {
   }, timeout)
 })
 
-app.get('/posts/1', (req, res) => {
+app.get('/posts/1', checkAuth, (req, res) => {
   res.send(
     {
       "userId": 1,
@@ -28,7 +41,7 @@ app.get('/posts/1', (req, res) => {
   )
 })
 
-app.get('/users/1', (req, res) => {
+app.get('/users/1', checkAuth, (req, res) => {
   res.send(
     {
       "id": 1,
