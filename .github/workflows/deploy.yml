@@ -9,37 +9,37 @@ on:
 
 
 jobs:
-  # deploy:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - name: Deploy to render
-  #       run:  bash ${GITHUB_WORKSPACE}/.github/deploy.sh
-        
-  
-  runTests:
-    # needs: [deploy]
+  deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20]
     steps:
       - uses: actions/checkout@v4
-        with:
-          repository: vaidkaran/effortless_test_runner
-          ref: 'main'
-          token: ${{ secrets.EFFORTLESS_TEST_RUNNER_ACCESS_TOKEN }}
-      - name: Install dependencies
-        env:
-          EFFORTLESS_TEST_RUNNER_ACCESS_TOKEN: ${{ secrets.EFFORTLESS_TEST_RUNNER_ACCESS_TOKEN }}
-        run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.EFFORTLESS_TEST_RUNNER_ACCESS_TOKEN }}" >> .npmrc
-          npm install
-      - name: Run tests
-        run: npm run test:qa
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4.3.4
-        with:
-          name: test_execution_report
-          path: ./mochawesome-report/**/*
+      - name: Deploy to render
+        run:  bash ${GITHUB_WORKSPACE}/.github/deploy.sh
+        
+  
+  # runTests:
+  #   # needs: [deploy]
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       node-version: [20]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         repository: vaidkaran/effortless_test_runner
+  #         ref: 'main'
+  #         token: ${{ secrets.EFFORTLESS_TEST_RUNNER_ACCESS_TOKEN }}
+  #     - name: Install dependencies
+  #       env:
+  #         EFFORTLESS_TEST_RUNNER_ACCESS_TOKEN: ${{ secrets.EFFORTLESS_TEST_RUNNER_ACCESS_TOKEN }}
+  #       run: |
+  #         echo "//npm.pkg.github.com/:_authToken=${{ secrets.EFFORTLESS_TEST_RUNNER_ACCESS_TOKEN }}" >> .npmrc
+  #         npm install
+  #     - name: Run tests
+  #       run: npm run test:qa
+  #     - name: Upload a Build Artifact
+  #       uses: actions/upload-artifact@v4.3.4
+  #       with:
+  #         name: test_execution_report
+  #         path: ./mochawesome-report/**/*
         
