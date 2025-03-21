@@ -11,7 +11,10 @@ const checkAuth = (req, res, next) => {
   next();
 };
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+  await new Promise(resolve => setTimeout(() => {
+    resolve();
+  }, 5000));
   res.send('Welcome to the demo-api');
 })
 
@@ -41,7 +44,7 @@ app.get('/posts/1', checkAuth, (req, res) => {
   )
 })
 
-app.get('/users/1', checkAuth, (req, res) => {
+app.get('/users/1', (req, res) => {
   res.send(
     {
       "id": 1,
